@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+
+    implementation project(':domain')
+
+    /**
+     * General libraries
+     */
+    implementation   "org.jetbrains.kotlin:kotlin-stdlib-jre8:${rootProject.ext.kotlinVersion}"
+    //OkHttp
+    implementation   "com.squareup.okhttp3:okhttp:${rootProject.ext.okHttpVersion}"
+    implementation   "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okHttpVersion}"
+    //Gson
+    implementation   "com.google.code.gson:gson:${rootProject.ext.gsonVersion}"
+    // RX java
+    implementation   "io.reactivex.rxjava2:rxkotlin:${rootProject.ext.rxKotlinVersion}"
+    implementation   "javax.inject:javax.inject:${rootProject.ext.javaxInjectVersion}"
+    implementation   "javax.annotation:jsr250-api:${rootProject.ext.javaxAnnotationVersion}"
+
+    // Retrofit
+    implementation   "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation   "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
+    implementation   "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofitVersion}"
+}

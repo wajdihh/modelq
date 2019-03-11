@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.wajdihh.modelq"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled = true
+        testInstrumentationRunner "org.buffer.android.boilerplate.ui.test.TestRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':presentation')
+    implementation project(':data')
+
+    /**
+     * General libraries
+     */
+    implementation "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintLayoutVersion}"
+    implementation "javax.annotation:jsr250-api:${rootProject.ext.javaxAnnotationVersion}"
+    implementation "com.android.support:multidex:${rootProject.ext.multidexVersion}"
+
+    //Dagger
+    kapt "com.google.dagger:dagger-compiler:${rootProject.ext.daggerVersion}"
+    kapt "com.google.dagger:dagger-android-processor:${rootProject.ext.daggerVersion}"
+    implementation "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${rootProject.ext.daggerVersion}"
+    //RX
+    implementation "io.reactivex.rxjava2:rxkotlin:${rootProject.ext.rxKotlinVersion}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxAndroidVersion}"
+    implementation "javax.inject:javax.inject:${rootProject.ext.javaxInjectVersion}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:${rootProject.ext.kotlinVersion}"
+}
