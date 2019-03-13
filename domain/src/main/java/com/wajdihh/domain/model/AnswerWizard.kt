@@ -5,4 +5,4 @@ package com.wajdihh.domain.model
  * AnswerWizard
  */
 data class AnswerWizard(val id: String,
-                        val wizard: Wizard)
+                        val wizard: Wizard?)

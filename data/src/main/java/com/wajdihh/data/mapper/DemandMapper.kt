@@ -16,19 +16,19 @@ fun PaginationJson.toPager() = Pager(currentPage = currentPage,
         perPage = perPage,
         total = total)
 
-fun DemandJson.toDemand() = Demand(title = title,
-        address = address,
-        description = description,
-        price = unitPrice.toDouble(),
-        lat = lat.toDouble(),
-        lng = lng.toDouble(),
-        user = user.toUser(),
-        answerWizard = answerWizard.toAnswerWizard()
+fun DemandJson.toDemand() = Demand(title = title ?: "",
+        address = address ?: "",
+        description = description ?: "",
+        price = (unitPrice ?: "0").toDouble(),
+        lat = (lat ?: "0").toDouble(),
+        lng = (lng ?: "0").toDouble(),
+        user = user?.toUser(),
+        answerWizard = answerWizard?.toAnswerWizard()
 )
 
 fun WizardJson.toWizard() = Wizard(id = id)
 
-fun AnswerWizardJson.toAnswerWizard() = AnswerWizard(id = id, wizard = wizard.toWizard())
+fun AnswerWizardJson.toAnswerWizard() = AnswerWizard(id = id, wizard = wizard?.toWizard())
 
 /// Local entity mapper
 /**

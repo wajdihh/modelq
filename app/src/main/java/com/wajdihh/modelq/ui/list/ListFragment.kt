@@ -28,7 +28,7 @@ class ListFragment : BaseFragment(), DemandListView {
             radius = 50,
             type = "mission",
             page = 1,
-            perPage = PER_PAGE)
+            perPage = 50)
 
 
     override fun getLayoutResources() = R.layout.fragment_list
@@ -61,6 +61,4 @@ class ListFragment : BaseFragment(), DemandListView {
     }
 
 }
-
-const val PER_PAGE = 50
 

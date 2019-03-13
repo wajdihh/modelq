@@ -8,7 +8,7 @@ import com.wajdihh.presentation.model.DemandsPagingUi
 
 fun Demand.toDemandUi() = DemandUi(title = title,
                                    address = address,
-                                   userName = user.firstName,
+        userName = user?.firstName ?: "",
                                    price = price,
                                    type = "",
                                    distance = lat,

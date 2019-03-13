@@ -10,5 +10,5 @@ data class Demand(val title: String,
                   val price: Double,
                   val lat: Double,
                   val lng: Double,
-                  val user: User,
+                  val user: User?,
                   val answerWizard: AnswerWizard?)

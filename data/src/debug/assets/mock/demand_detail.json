@@ -1,0 +1,306 @@
+{
+  "address": "168 Rue de Belleville, Paris, France",
+  "answer_id": "2db772ab-f3fd-4717-824b-ecd0b87d7ebc",
+  "asker_id": 947826,
+  "category_id": 32,
+  "comission": "0.0",
+  "created_at": "2017-10-05T11:43:08+02:00",
+  "deadline": "2017-10-26T11:43:08+02:00",
+  "description": "J'ai ce problème... : Depuis moins d'une semaine\nDate de service souhaitée : Je suis flexible\nDisponibilités : Avant 9h, Entre 9h et 12h\nLocalisation : Paris, 19e arrondissement\nJustificatif souhaité : Non\nInformations complémentaires : Plop",
+  "id": 404870,
+  "lat": "48.8752444",
+  "lng": "2.391928",
+  "messages_count": 0,
+  "offers_count": 1,
+  "online_payment": true,
+  "package_id": "7e1d8c28-1322-41af-9fc2-919019eeb3cb",
+  "pricing_type": "quote",
+  "pricing_unit": null,
+  "purchases_price": "0.0",
+  "share_url": "https://stootie.com/stoot/mission/debouchage-d-evier-404870",
+  "state": "open",
+  "stoot_type": "mission",
+  "title": "Débouchage d'évier",
+  "unit_price": "0.0",
+  "updated_at": "2017-10-05T11:43:16+02:00",
+  "followed": false,
+  "room": null,
+  "offers_amount_min": 3400,
+  "offers_amount_max": 3400,
+  "offers_amount_accepted": null,
+  "user": {
+    "created_at": "2017-07-24T15:03:14+02:00",
+    "eval_avg": "4.5",
+    "eval_count": 2,
+    "firstname": "Remip3",
+    "id": 947826,
+    "last_sign_in_at": "2017-10-05T11:40:30+02:00",
+    "lastname": "Peron",
+    "profile_picture_url": null,
+    "response_rate": 50,
+    "response_time": 104,
+    "thumb_picture_url": null,
+    "followed": false,
+    "common_friends": false
+  },
+  "answer_wizard": {
+    "id": "2db772ab-f3fd-4717-824b-ecd0b87d7ebc",
+    "user_id": "947826",
+    "wizard": {
+      "id": "4eb3810d-b340-4755-a291-e6aee6bdd6a4",
+      "configuration": {
+        "variables": {
+          "amount": {
+            "index": 5,
+            "property": "value"
+          },
+          "lat": {
+            "index": 4,
+            "property": "to.coordinates.lat"
+          },
+          "lng": {
+            "index": 4,
+            "property": "to.coordinates.lng"
+          },
+          "address": {
+            "index": 4,
+            "property": "to.address"
+          }
+        },
+        "title": "Débouchage d'évier",
+        "description": null
+      },
+      "package": {
+        "id": "7e1d8c28-1322-41af-9fc2-919019eeb3cb",
+        "category_id": "1e36963c-e3fc-4bb4-8146-6f221ecd56b5",
+        "legacy_category_id": 32,
+        "status": "published",
+        "slug": "B.1.3.1",
+        "name": "Débouchage d’évier",
+        "presentation": {
+          "job": {
+            "gender": "M",
+            "singular": "déboucheur d'évier",
+            "plural": "déboucheurs d'évier"
+          }
+        }
+      },
+      "questions": [
+        {
+          "answer_title": "J'ai ce problème...",
+          "type": "single_choice",
+          "choices": [
+            {
+              "type": "option",
+              "id": "1ce35318-bee9-4ffb-a1b3-72cea82bd34b",
+              "label": "Depuis moins d'une semaine"
+            },
+            {
+              "type": "option",
+              "id": "99ececc3-ebb5-4dab-bdad-8968e5f306e7",
+              "label": "Depuis quelques semaines"
+            },
+            {
+              "type": "option",
+              "id": "bb86b147-8cb8-4f00-83bc-1d1dbff39abc",
+              "label": "Depuis plus d'un mois"
+            }
+          ],
+          "mandatory": true,
+          "question_title": "Depuis combien de temps votre évier est-il bouché ?",
+          "answer": {
+            "type": "single_choice",
+            "choices": [
+              {
+                "id": "1ce35318-bee9-4ffb-a1b3-72cea82bd34b",
+                "type": "option",
+                "value": "Depuis moins d'une semaine"
+              }
+            ]
+          }
+        },
+        {
+          "caption_action": "Ajouter des photos",
+          "mandatory": false,
+          "answer_title": "Photos",
+          "question_title": "Souhaitez-vous ajouter des photos ?",
+          "caption": "Une photo vaut mieux que mille mots",
+          "max": 3,
+          "type": "photos",
+          "heading": "Une photo vaut mieux que mille mots",
+          "answer": null
+        },
+        {
+          "answer_title": "Date de service souhaitée",
+          "type": "single_choice",
+          "choices": [
+            {
+              "type": "option",
+              "id": "15d98387-f439-469c-8e94-7d2ecafe6059",
+              "label": "Je suis flexible"
+            },
+            {
+              "type": "option",
+              "id": "643816d4-209e-450e-85fe-5725c2fdf213",
+              "label": "Le plus tôt possible"
+            },
+            {
+              "answer_format": "Avant le {{date}}",
+              "type": "date",
+              "id": "66e6f81e-662a-4623-8a11-5872f70515a0",
+              "label": "Avant une date donnée"
+            },
+            {
+              "answer_format": "Le {{date}}",
+              "type": "date",
+              "id": "e89e2a1d-810a-4ae2-8ee6-1ec6ec650e82",
+              "label": "À une date précise"
+            }
+          ],
+          "mandatory": true,
+          "question_title": "Quand souhaitez-vous qu'ait lieu le débouchage ?",
+          "answer": {
+            "type": "single_choice",
+            "choices": [
+              {
+                "id": "15d98387-f439-469c-8e94-7d2ecafe6059",
+                "type": "option",
+                "value": "Je suis flexible"
+              }
+            ]
+          }
+        },
+        {
+          "answer_title": "Disponibilités",
+          "type": "multiple_choices",
+          "choices": [
+            {
+              "type": "option",
+              "id": "c9424609-22fd-46c9-a1a2-f095bf83bdfb",
+              "label": "Peu importe"
+            },
+            {
+              "type": "option",
+              "id": "0c742869-ac64-4f49-9ff6-1bd83a72c328",
+              "label": "Avant 9h"
+            },
+            {
+              "type": "option",
+              "id": "75de7d04-0118-4ef9-bec3-0a8f263c9eaa",
+              "label": "Entre 9h et 12h"
+            },
+            {
+              "type": "option",
+              "id": "fd7d7c7e-4e83-4797-a5f8-a0271dce7c5b",
+              "label": "Entre 12h et 15h"
+            },
+            {
+              "type": "option",
+              "id": "cac71c58-c977-49f1-957d-97b885f1018e",
+              "label": "Entre 15h et 18h"
+            },
+            {
+              "type": "option",
+              "id": "62fe5747-03ad-4c5d-b94c-841a2de63983",
+              "label": "Entre 18h et 20h"
+            },
+            {
+              "type": "option",
+              "id": "c2580551-8992-4f53-a69a-fd14ca3dc9ab",
+              "label": "Après 20h"
+            }
+          ],
+          "mandatory": true,
+          "question_title": "Quels moments de la journée vous conviendraient le mieux ?",
+          "answer": {
+            "type": "multiple_choices",
+            "choices": [
+              {
+                "id": "0c742869-ac64-4f49-9ff6-1bd83a72c328",
+                "type": "option",
+                "value": "Avant 9h"
+              },
+              {
+                "id": "75de7d04-0118-4ef9-bec3-0a8f263c9eaa",
+                "type": "option",
+                "value": "Entre 9h et 12h"
+              }
+            ]
+          }
+        },
+        {
+          "answer_title": "Localisation",
+          "type": "location",
+          "caption": "Entrez l'adresse",
+          "mandatory": true,
+          "question_title": "Où avez-vous besoin de ce service ?",
+          "answer": {
+            "type": "location",
+            "to": {
+              "address": "168 Rue de Belleville, Paris, France",
+              "coordinates": {
+                "lat": 48.8752444,
+                "lng": 2.391928000000007
+              },
+              "city": "Paris, 19e arrondissement"
+            }
+          }
+        },
+        {
+          "answer_title": "Budget envisagé",
+          "type": "price",
+          "caption": "Champ de prix",
+          "mandatory": false,
+          "question_title": "Avez-vous une idée de budget ?",
+          "answer": null
+        },
+        {
+          "answer_title": "Justificatif souhaité",
+          "type": "single_choice",
+          "choices": [
+            {
+              "type": "option",
+              "id": "43fcb081-42fd-431d-913a-598592f8c80e",
+              "label": "Oui"
+            },
+            {
+              "type": "option",
+              "id": "e9370721-161a-43d4-b1d6-86316393f342",
+              "label": "Non"
+            },
+            {
+              "type": "option",
+              "id": "a8679c7e-7956-4838-a7d0-5410a6850870",
+              "label": "Cela m'est égal"
+            }
+          ],
+          "mandatory": true,
+          "question_title": "Avez-vous besoin d'un justificatif ?",
+          "answer": {
+            "type": "single_choice",
+            "choices": [
+              {
+                "id": "e9370721-161a-43d4-b1d6-86316393f342",
+                "type": "option",
+                "value": "Non"
+              }
+            ]
+          }
+        },
+        {
+          "answer_title": "Informations complémentaires",
+          "type": "text",
+          "caption": "Si besoin, donnez plus d'informations aux personnes prêtes à vous rendre service",
+          "mandatory": false,
+          "question_title": "Avez-vous des précisions à ajouter ?",
+          "answer": {
+            "type": "text",
+            "value": "Plop"
+          }
+        }
+      ]
+    }
+  },
+  "comments_count": 0,
+  "comments": []
+}
