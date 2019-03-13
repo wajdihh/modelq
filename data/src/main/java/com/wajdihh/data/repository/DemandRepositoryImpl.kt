@@ -4,9 +4,11 @@ import com.wajdihh.data.mapper.toDemand
 import com.wajdihh.data.mapper.toDemandsPaging
 import com.wajdihh.data.source.local.DemandDao
 import com.wajdihh.data.source.remote.DemandService
+import com.wajdihh.data.utils.NoConnectivityException
 import com.wajdihh.domain.model.Demand
 import com.wajdihh.domain.model.DemandsPaging
 import com.wajdihh.domain.repository.DemandRepository
+import com.wajdihh.domain.request.SearchRequest
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -15,22 +17,22 @@ import javax.inject.Inject
  *
  * Implements DOMAIN Layer repository, and provides the methods to handle local and remote data
  */
-class DemandRepositoryImpl @Inject constructor(private val isOnline: Boolean,
-                                               private val demandService: DemandService,
+class DemandRepositoryImpl @Inject constructor(private val demandService: DemandService,
                                                private val demandDao: DemandDao) : DemandRepository {
 
 
-    override fun getDemands(lat: Double,
-                            lng: Double,
-                            radius: Int,
-                            type: String,
-                            page: Int,
-                            perPage: Int): Single<DemandsPaging> {
-        return if (isOnline)
-            demandService.getDemands(lat, lng, radius, type, page, perPage).map { it.toDemandsPaging() }
-        else //TODO change to dao
-            demandService.getDemands(lat, lng, radius, type, page, perPage).map { it.toDemandsPaging() }
-
+    override fun getDemands(params: SearchRequest?): Single<DemandsPaging> {
+        return demandService.getDemands(params?.lat,
+                params?.lng,
+                params?.radius,
+                params?.type,
+                params?.page,
+                params?.perPage).map { it.toDemandsPaging() }.onErrorResumeNext {
+            if (it is NoConnectivityException)
+                demandDao.getDemands().map { it.toDemandsPaging() }
+            else
+                Single.error(it)
+        }
     }
 
     override fun getDemandDetails(id: String): Single<Demand> {

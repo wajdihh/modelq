@@ -4,6 +4,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.wajdihh.data.source.remote.DemandService
+import com.wajdihh.data.utils.ConnectivityInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -18,8 +19,8 @@ import java.util.concurrent.TimeUnit
 object DataRemoteFactory {
 
 
-    fun createDemandService(baseUrl: String, httpLoggingInterceptor: Interceptor): DemandService {
-        val retrofit = createNetworkingBundle(baseUrl, httpLoggingInterceptor)
+    fun createDemandService(baseUrl: String, isOnline: Boolean, userAccessToken: String): DemandService {
+        val retrofit = createNetworkingBundle(baseUrl, ConnectivityInterceptor(isOnline, userAccessToken))
         return retrofit.create(DemandService::class.java)
     }
 

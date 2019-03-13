@@ -7,8 +7,6 @@ import com.wajdihh.domain.model.User
  * Created by wajdihh on 3/12/19.
  * Map user Data to User model
  */
-
-
 fun UserJson.toUser() = User(firstName = firstName,
         lastName = lastName,
         lastSignInAt = lastSignInAt,

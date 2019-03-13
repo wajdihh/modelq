@@ -6,6 +6,6 @@ data class PaginationJson(
         @SerializedName("current_page") val currentPage: Int,
         @SerializedName("next_page") val nextPage: Int,
         @SerializedName("per_page") val perPage: Int,
-        @SerializedName("previous_page") val previousPage: Any,
+        @SerializedName("previous_page") val previousPage: Int,
         val total: Int
 )
