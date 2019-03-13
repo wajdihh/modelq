@@ -2,6 +2,7 @@ package com.wajdihh.domain.repository
 
 import com.wajdihh.domain.model.Demand
 import com.wajdihh.domain.model.DemandsPaging
+import com.wajdihh.domain.request.SearchRequest
 import io.reactivex.Single
 
 /**
@@ -10,12 +11,7 @@ import io.reactivex.Single
  */
 interface DemandRepository {
 
-    fun getDemands(lat: Double,
-                   lng: Double,
-                   radius: Int,
-                   type: String,
-                   page: Int,
-                   perPage: Int): Single<DemandsPaging>
+    fun getDemands(params: SearchRequest?): Single<DemandsPaging>
 
     fun getDemandDetails(id: String): Single<Demand>
 

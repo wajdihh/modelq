@@ -5,6 +5,7 @@ import com.wajdihh.domain.executor.ThreadExecutor
 import com.wajdihh.domain.interactor.SingleUseCase
 import com.wajdihh.domain.model.DemandsPaging
 import com.wajdihh.domain.repository.DemandRepository
+import com.wajdihh.domain.request.SearchRequest
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -16,7 +17,7 @@ import javax.inject.Inject
  */
 class GetDemandsUseCase @Inject constructor(private val demandRepository: DemandRepository,
                                             threadExecutor: ThreadExecutor,
-                                            postExecutionThread: PostExecutionThread) : SingleUseCase<DemandsPaging, Void?>(threadExecutor, postExecutionThread) {
+                                            postExecutionThread: PostExecutionThread) : SingleUseCase<DemandsPaging, SearchRequest?>(threadExecutor, postExecutionThread) {
 
-    override fun buildUseCaseObservable(params: Void?): Single<DemandsPaging> = demandRepository.getDemands()
+    override fun buildUseCaseObservable(params: SearchRequest?): Single<DemandsPaging> = demandRepository.getDemands(params)
 }
