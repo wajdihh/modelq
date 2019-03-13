@@ -69,4 +69,12 @@ abstract class BaseFragment : Fragment() {
     fun isAttachedToMainActivity(): Boolean {
         return mContainerActivity != null && isAdded
     }
+
+    fun showProgress () {
+        mContainerActivity?.showProgress()
+    }
+
+    fun hideProgress () {
+        mContainerActivity?.hideProgress()
+    }
 }

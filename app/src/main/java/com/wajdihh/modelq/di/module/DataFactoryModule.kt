@@ -21,7 +21,6 @@ import javax.inject.Singleton
 @Module
 class DataFactoryModule {
 
-
     /**
      * ------------------------------ REMOTE -------------------------------------------
      */

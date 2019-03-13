@@ -1,4 +1,4 @@
-package com.wajdihh.domain.interactor.usecase.User
+package com.wajdihh.domain.interactor.usecase.user
 
 /**
  * Created by wajdihh on 3/11/19.

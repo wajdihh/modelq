@@ -4,7 +4,9 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
+import com.wajdihh.data.executor.JobExecutor
 import com.wajdihh.domain.executor.PostExecutionThread
+import com.wajdihh.domain.executor.ThreadExecutor
 import com.wajdihh.modelq.application.UiThread
 import dagger.Module
 import dagger.Provides
@@ -36,6 +38,12 @@ class AppModule(private val app: Application) {
     @Singleton
     internal fun providePostExecutionThread(uiThread: UiThread): PostExecutionThread {
         return uiThread
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideThreadExecutor(jobExecutor: JobExecutor): ThreadExecutor {
+        return jobExecutor
     }
 
 }
