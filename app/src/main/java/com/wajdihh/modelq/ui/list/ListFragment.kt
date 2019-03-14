@@ -20,7 +20,6 @@ import javax.inject.Inject
  */
 class ListFragment : BaseFragment(), DemandListView {
 
-
     companion object {
         fun newInstance() = ListFragment()
     }
@@ -35,9 +34,7 @@ class ListFragment : BaseFragment(), DemandListView {
             radius = 50,
             type = "mission",
             page = 1,
-            perPage = 50)
-
-    private var total = 0
+            perPage = 20)
 
     override fun getLayoutResources() = R.layout.fragment_list
 
@@ -57,7 +54,7 @@ class ListFragment : BaseFragment(), DemandListView {
         })
         adapter.setOnLoadMoreListener(object : BaseRecycleViewAdapter.OnLoadMoreListener {
             override fun onLoadMore() {
-
+                presenter.loadMoreDemands(adapter.itemCount)
             }
         })
 
@@ -76,9 +73,7 @@ class ListFragment : BaseFragment(), DemandListView {
     }
 
     override fun onSuccessLoadList(demandsPagingUi: DemandsPagingUi) {
-        total = demandsPagingUi.total
-        adapter.setList(demandsPagingUi.demands)
-
+        adapter.appendList(ArrayList(demandsPagingUi.demands), demandsPagingUi.total)
         //save List
         presenter.saveDemands(demandsPagingUi.demands)
 

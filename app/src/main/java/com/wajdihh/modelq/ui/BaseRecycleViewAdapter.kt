@@ -13,18 +13,18 @@ import com.wajdihh.modelq.R
  */
 abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var myList: List<T>? = null
+    private var myList = ArrayList<T>()
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
     private var total = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == VIEW_TYPE_ITEM) {
+        return if (viewType == VIEW_TYPE_ITEM) {
             val view = LayoutInflater.from(parent.context).inflate(getResourceLayout(), parent, false)
-            return createViewHolder(view)
+            createViewHolder(view)
         }else {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_progressbar, parent, false)
-            return ViewHolderLoading(view)
+            ViewHolderLoading(view)
         }
 
     }
@@ -32,17 +32,13 @@ abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerV
         return if (position >= itemCount - 1 && itemCount < total) VIEW_TYPE_LOADING else VIEW_TYPE_ITEM
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
         if (holder is BaseRecycleViewHolder) {
             holder.setOnRecycleClickListener(object : BaseRecycleViewHolder.OnRecycleClickListener {
                 override fun onClick(v: View, position: Int) {
                     mOnClickRowListener?.onClickRow(v, position)
                 }
             })
-            if (myList != null)
-                onIterateRow(holder, position, myList!![position])
-            else
-                throw IllegalArgumentException("You must set list of items before setting the adapter")
+            onIterateRow(holder as VH, position, myList[position])
         }else if (holder is ViewHolderLoading){
             holder.bindViewHolder()
             mOnLoadMoreListener?.onLoadMore()
@@ -50,13 +46,10 @@ abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerV
 
     }
 
-    fun setTotalItemsToLoad(total : Int){
-        this.total = total
-    }
     /**
      * Define size
      */
-    override fun getItemCount(): Int = myList?.size ?: 0
+    override fun getItemCount(): Int = myList.size
 
     /**
      * Test if adapter is empty
@@ -82,12 +75,21 @@ abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerV
     /**
      * Set list of Items
      */
-    fun setList(list: List<T>) {
+    fun setList(list: ArrayList<T>) {
         this.myList = list
         notifyDataSetChanged()
     }
 
-    fun getList(): List<T>? = this.myList
+    /**
+     * add list to list of Items (To use in case of pagination)
+     */
+    fun appendList(list: ArrayList<T>, totalItemToLoad: Int) {
+        this.total = totalItemToLoad
+        this.myList.addAll(list)
+        notifyDataSetChanged()
+    }
+
+    fun getList(): ArrayList<T>? = this.myList
 
 
     /**
@@ -148,7 +150,6 @@ open class BaseRecycleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
      * To handle row clickListener
      */
     interface OnRecycleClickListener {
-
         fun onClick(v: View, position: Int)
     }
 }

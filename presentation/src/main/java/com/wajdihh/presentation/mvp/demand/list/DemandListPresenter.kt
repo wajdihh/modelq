@@ -11,5 +11,7 @@ interface DemandListPresenter : BasePresenter {
      */
     fun searchForDemands(params : SearchRequest)
 
+    fun loadMoreDemands(itemCount: Int)
+
     fun saveDemands(demands : List<DemandItemUi>)
 }

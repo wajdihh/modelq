@@ -7,4 +7,14 @@ interface BaseView {
      * before entering in on success or on error to handle the UI components
      */
     fun isViewAttached() : Boolean
+
+    /**
+     * When progress is showing
+     */
+    fun onShowProgress()
+
+    /**
+     * When progress is hiding
+     */
+    fun onHideProgress()
 }

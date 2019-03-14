@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <bool name="enable_mock_mode">false</bool>
+    <bool name="enable_mock_mode">true</bool>
     <string name="URL_WEB_SERVICE">https://bff-mobile-dev.stootie.com</string>
 </resources>
