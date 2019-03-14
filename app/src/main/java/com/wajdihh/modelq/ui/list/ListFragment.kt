@@ -1,13 +1,17 @@
 package com.wajdihh.modelq.ui.list
 
+import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.Toast
 import com.wajdihh.domain.request.SearchRequest
 import com.wajdihh.modelq.R
 import com.wajdihh.modelq.application.MyApplication
 import com.wajdihh.modelq.ui.BaseFragment
+import com.wajdihh.modelq.ui.BaseRecycleViewAdapter
 import com.wajdihh.presentation.model.DemandsPagingUi
 import com.wajdihh.presentation.mvp.demand.list.DemandListPresenter
 import com.wajdihh.presentation.mvp.demand.list.DemandListView
+import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
 /**
@@ -15,6 +19,7 @@ import javax.inject.Inject
  * ListFragment
  */
 class ListFragment : BaseFragment(), DemandListView {
+
     companion object {
         fun newInstance() = ListFragment()
     }
@@ -22,6 +27,7 @@ class ListFragment : BaseFragment(), DemandListView {
     @Inject
     lateinit var presenter : DemandListPresenter
 
+    private lateinit var adapter: ListAdapter
     //Data statiques pour le moment
     private val params = SearchRequest(lat = 48.8694023,
             lng = 2.3522692,
@@ -30,6 +36,7 @@ class ListFragment : BaseFragment(), DemandListView {
             page = 1,
             perPage = 50)
 
+    private var total = 0
 
     override fun getLayoutResources() = R.layout.fragment_list
 
@@ -37,6 +44,21 @@ class ListFragment : BaseFragment(), DemandListView {
         //Dagger
         MyApplication.uiComponent.inject(this)
         presenter.attachView(this)
+
+        //Set list
+        adapter = ListAdapter()
+        demandsRecycleView.layoutManager = LinearLayoutManager(activity)
+        demandsRecycleView.adapter = adapter
+        adapter.setOnClickRowListener(object : BaseRecycleViewAdapter.OnClickRowListener {
+            override fun onClickRow(v: View, position: Int) {
+                Toast.makeText(activity, "CLick rowww", Toast.LENGTH_LONG).show()
+            }
+        })
+        adapter.setOnLoadMoreListener(object : BaseRecycleViewAdapter.OnLoadMoreListener {
+            override fun onLoadMore() {
+
+            }
+        })
 
         //Launch the use case to get the list
         presenter.searchForDemands(params)
@@ -53,11 +75,12 @@ class ListFragment : BaseFragment(), DemandListView {
     }
 
     override fun onSuccessLoadList(demandsPagingUi: DemandsPagingUi) {
-        Toast.makeText(activity, "Total is ${demandsPagingUi.total}", Toast.LENGTH_SHORT).show()
+        total = demandsPagingUi.total
+        adapter.setList(demandsPagingUi.demands)
     }
 
     override fun onErrorLoadList(throwable: Throwable) {
-        Toast.makeText(activity, "Error", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "Operation finished with error", Toast.LENGTH_SHORT).show()
     }
 
 }

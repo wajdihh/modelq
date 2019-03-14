@@ -3,9 +3,7 @@ package com.wajdihh.presentation.mvp.demand.detail
 import com.wajdihh.domain.interactor.usecase.demand.GetDemandUseCase
 import com.wajdihh.domain.model.Demand
 import com.wajdihh.presentation.mapper.toDemandUi
-import com.wajdihh.presentation.model.DemandUi
 import io.reactivex.observers.DisposableSingleObserver
-import java.lang.UnsupportedOperationException
 import javax.inject.Inject
 
 class DemandDetailPresenterImpl @Inject constructor(private val getDemandUseCase: GetDemandUseCase) : DemandDetailPresenter {

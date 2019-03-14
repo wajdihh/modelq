@@ -43,4 +43,12 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxAndroidVersion}"
     implementation "javax.inject:javax.inject:${rootProject.ext.javaxInjectVersion}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:${rootProject.ext.kotlinVersion}"
+    //Android support
+    implementation "com.android.support:support-annotations:${rootProject.ext.supportLibraryVersion}"
+    implementation "com.android.support:support-v4:${rootProject.ext.supportLibraryVersion}"
+    implementation "com.android.support:support-v13:${rootProject.ext.supportLibraryVersion}"
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
+    implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportLibraryVersion}"
+    implementation "com.android.support:cardview-v7:${rootProject.ext.supportLibraryVersion}"
+    implementation "com.android.support:design:${rootProject.ext.supportLibraryVersion}"
 }

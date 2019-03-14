@@ -40,7 +40,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * In this method we initialize views (kotlin extension, findViewById ..) because in it we have the guarantee that
      * the main View was created
      */
-    abstract fun onPostCreateView(isCreateInstance: Boolean)
+    abstract fun onPostCreateView(isNewInstance: Boolean)
 
 
     /**
