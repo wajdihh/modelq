@@ -4,36 +4,55 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import com.wajdihh.modelq.R
 
 /**
  * Created by wajdihh on 3/13/19.
  * Base adapter for recycleView
  */
-abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerView.Adapter<VH>() {
+abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var myList: List<T>? = null
+    private val VIEW_TYPE_ITEM = 0
+    private val VIEW_TYPE_LOADING = 1
+    private var total = 0
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val view = LayoutInflater.from(parent.context).inflate(getResourceLayout(), parent, false)
-        return createViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        if (viewType == VIEW_TYPE_ITEM) {
+            val view = LayoutInflater.from(parent.context).inflate(getResourceLayout(), parent, false)
+            return createViewHolder(view)
+        }else {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_progressbar, parent, false)
+            return ViewHolderLoading(view)
+        }
+
     }
+    override fun getItemViewType(position: Int): Int {
+        return if (position >= itemCount - 1 && itemCount < total) VIEW_TYPE_LOADING else VIEW_TYPE_ITEM
+    }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
-
-        holder.setOnRecycleClickListener(object : BaseRecycleViewHolder.OnRecycleClickListener {
-            override fun onClick(v: View, position: Int) {
-                mOnClickRowListener?.onClickRow(v, position)
-            }
-        })
-        if (position >= itemCount - 1)
+        if (holder is BaseRecycleViewHolder) {
+            holder.setOnRecycleClickListener(object : BaseRecycleViewHolder.OnRecycleClickListener {
+                override fun onClick(v: View, position: Int) {
+                    mOnClickRowListener?.onClickRow(v, position)
+                }
+            })
+            if (myList != null)
+                onIterateRow(holder, position, myList!![position])
+            else
+                throw IllegalArgumentException("You must set list of items before setting the adapter")
+        }else if (holder is ViewHolderLoading){
+            holder.bindViewHolder()
             mOnLoadMoreListener?.onLoadMore()
+        }
 
-        if (myList != null)
-            onIterateRow(holder, position, myList!![position])
-        else
-            throw IllegalArgumentException("You must set list of items before setting the adapter")
     }
 
+    fun setTotalItemsToLoad(total : Int){
+        this.total = total
+    }
     /**
      * Define size
      */
@@ -101,6 +120,12 @@ abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerV
     }
 }
 
+class ViewHolderLoading(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private val progressBar : ProgressBar = itemView.findViewById(R.id.itemProgressbar)
+    fun bindViewHolder() {
+        progressBar.isIndeterminate = true
+    }
+}
 open class BaseRecycleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private var mOnRecycleClickListener: OnRecycleClickListener? = null
     fun setOnRecycleClickListener(clickListener: OnRecycleClickListener) {

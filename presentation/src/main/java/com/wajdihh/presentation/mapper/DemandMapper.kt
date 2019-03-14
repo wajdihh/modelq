@@ -18,3 +18,12 @@ fun Demand.toDemandUi() = DemandItemUi(title = title,
 fun DemandsPaging.toDemandsPagingUi() = DemandsPagingUi(total = pager.total,
                                                         currentPage = pager.currentPage,
                                                         demands = demands.map { it.toDemandUi() })
+
+fun DemandItemUi.toDemand() = Demand(title = title,
+        address = address,
+        description = "",
+        price = price,
+        lat = 0.0,
+        lng = 0.0,
+        user = null,
+        answerWizard = null)

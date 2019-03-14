@@ -39,9 +39,19 @@ fun List<DemandEntity>.toDemandsPaging() = DemandsPaging(pager = Pager(1, 50, si
 fun DemandEntity.toDemand() = Demand(title = title,
         address = address,
         description = "",
-        price = price.toDouble(),
-        lat = lat.toDouble(),
-        lng = lng.toDouble(),
+        price = price,
+        lat = lat,
+        lng = lng,
         user = User(firstName, lastName, "", "", ""),
         answerWizard = null
 )
+
+fun Demand.toDemandEntity() = DemandEntity(id = 0L,
+        title = title,
+        address = address,
+        firstName = user?.firstName ?: "",
+        lastName = user?.lastName ?: "",
+        price = price,
+        lat = lat,
+        lng = lng,
+        createdAt = "")

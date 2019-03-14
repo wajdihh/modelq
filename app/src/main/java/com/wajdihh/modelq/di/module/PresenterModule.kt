@@ -2,6 +2,7 @@ package com.wajdihh.modelq.di.module
 
 import com.wajdihh.domain.interactor.usecase.demand.GetDemandUseCase
 import com.wajdihh.domain.interactor.usecase.demand.GetDemandsUseCase
+import com.wajdihh.domain.interactor.usecase.demand.SaveDemandsUseCase
 import com.wajdihh.modelq.di.scope.PerActivity
 import com.wajdihh.presentation.mvp.demand.detail.DemandDetailPresenter
 import com.wajdihh.presentation.mvp.demand.detail.DemandDetailPresenterImpl
@@ -20,8 +21,8 @@ class PresenterModule {
 
     @Provides
     @PerActivity
-    fun providerDemandListPresenter(getDemandsUseCase: GetDemandsUseCase)
-            : DemandListPresenter = DemandListPresenterImpl(getDemandsUseCase)
+    fun providerDemandListPresenter(getDemandsUseCase: GetDemandsUseCase, saveDemandsUseCase: SaveDemandsUseCase)
+            : DemandListPresenter = DemandListPresenterImpl(getDemandsUseCase, saveDemandsUseCase)
 
     @Provides
     @PerActivity

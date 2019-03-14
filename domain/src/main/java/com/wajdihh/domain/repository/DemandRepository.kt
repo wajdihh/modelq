@@ -3,6 +3,7 @@ package com.wajdihh.domain.repository
 import com.wajdihh.domain.model.Demand
 import com.wajdihh.domain.model.DemandsPaging
 import com.wajdihh.domain.request.SearchRequest
+import io.reactivex.Completable
 import io.reactivex.Single
 
 /**
@@ -14,5 +15,7 @@ interface DemandRepository {
     fun getDemands(params: SearchRequest?): Single<DemandsPaging>
 
     fun getDemandDetails(id: String): Single<Demand>
+
+    fun saveDemands(list: List<Demand>): Completable
 
 }

@@ -14,6 +14,7 @@ import com.wajdihh.domain.model.Demand
 import com.wajdihh.domain.model.DemandsPaging
 import com.wajdihh.domain.repository.DemandRepository
 import com.wajdihh.domain.request.SearchRequest
+import io.reactivex.Completable
 import io.reactivex.Single
 
 /**
@@ -21,6 +22,7 @@ import io.reactivex.Single
  * Mock
  */
 class DemandServiceMock(private val context: Context) : DemandRepository {
+
 
     private val gson = Gson()
 
@@ -39,6 +41,7 @@ class DemandServiceMock(private val context: Context) : DemandRepository {
             gson.fromJson(json, DemandJson::class.java).toDemand()
         }
     }
+    override fun saveDemands(list: List<Demand>): Completable = Completable.complete()
 }
 
 fun createDemandRepository(context: Context, isMock: Boolean, demandService: DemandService, demandDao: DemandDao): DemandRepository {

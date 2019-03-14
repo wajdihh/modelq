@@ -1,6 +1,7 @@
 package com.wajdihh.data.repository
 
 import com.wajdihh.data.mapper.toDemand
+import com.wajdihh.data.mapper.toDemandEntity
 import com.wajdihh.data.mapper.toDemandsPaging
 import com.wajdihh.data.source.local.DemandDao
 import com.wajdihh.data.source.remote.DemandService
@@ -9,6 +10,7 @@ import com.wajdihh.domain.model.Demand
 import com.wajdihh.domain.model.DemandsPaging
 import com.wajdihh.domain.repository.DemandRepository
 import com.wajdihh.domain.request.SearchRequest
+import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -19,6 +21,7 @@ import javax.inject.Inject
  */
 class DemandRepositoryImpl @Inject constructor(private val demandService: DemandService,
                                                private val demandDao: DemandDao) : DemandRepository {
+
 
 
     override fun getDemands(params: SearchRequest?): Single<DemandsPaging> {
@@ -37,5 +40,9 @@ class DemandRepositoryImpl @Inject constructor(private val demandService: Demand
 
     override fun getDemandDetails(id: String): Single<Demand> {
         return demandService.getDemand(id).map { it.toDemand() }
+    }
+
+    override fun saveDemands(list: List<Demand>): Completable {
+        return Completable.fromAction { demandDao.saveDemands(list.map { it.toDemandEntity() }) }
     }
 }

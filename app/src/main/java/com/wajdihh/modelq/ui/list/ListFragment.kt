@@ -20,6 +20,7 @@ import javax.inject.Inject
  */
 class ListFragment : BaseFragment(), DemandListView {
 
+
     companion object {
         fun newInstance() = ListFragment()
     }
@@ -77,11 +78,16 @@ class ListFragment : BaseFragment(), DemandListView {
     override fun onSuccessLoadList(demandsPagingUi: DemandsPagingUi) {
         total = demandsPagingUi.total
         adapter.setList(demandsPagingUi.demands)
+
+        //save List
+        presenter.saveDemands(demandsPagingUi.demands)
+
     }
 
     override fun onErrorLoadList(throwable: Throwable) {
         Toast.makeText(activity, "Operation finished with error", Toast.LENGTH_SHORT).show()
     }
 
+    override fun onSuccessSaveList() {}
 }
 
