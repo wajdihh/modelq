@@ -25,11 +25,18 @@ class ListAdapter : BaseRecycleViewAdapter<DemandItemUi, ListViewHolder>() {
 
         holder.title.text = currentItem.title
         holder.address.text = currentItem.address
+        //Generate random icon
         setIconView(holder.iconView)
-
+        holder.userName.text = currentItem.userName
+        holder.price.text = currentItem.price.toString()
+        holder.distance.text = currentItem.distance.toString()
+        holder.since.text = currentItem.since.toString()
     }
 
 
+    /**
+     * Just to generate random icon
+     */
     private fun setIconView(view: TextView) {
         view.text = Random().nextInt(9).toString()
         val rnd = Random()
