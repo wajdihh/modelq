@@ -21,5 +21,5 @@ interface DemandRemoteDataSource {
 
     fun getDemands(params: SearchRequest?): Single<DemandsPaging>
 
-    fun getDemandDetails(id: String): Single<Demand>
+    fun getDemandDetails(id: Int): Single<Demand>
 }

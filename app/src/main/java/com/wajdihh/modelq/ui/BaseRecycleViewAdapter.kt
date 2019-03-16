@@ -38,7 +38,7 @@ abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerV
         if (holder is BaseRecycleViewHolder) {
             holder.setOnRecycleClickListener(object : BaseRecycleViewHolder.OnRecycleClickListener {
                 override fun onClick(v: View, position: Int) {
-                    mOnClickRowListener?.onClickRow(v, position)
+                    mOnClickRowListener?.onClickRow(v, position, myList[position])
                 }
             })
             onIterateRow(holder as VH, position, myList[position])
@@ -112,16 +112,16 @@ abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerV
     }
 
 
-    private var mOnClickRowListener: OnClickRowListener? = null
-    fun setOnClickRowListener(listener: OnClickRowListener) {
+    private var mOnClickRowListener: OnClickRowListener<T>? = null
+    fun setOnClickRowListener(listener: OnClickRowListener<T>) {
         mOnClickRowListener = listener
     }
 
-    interface OnClickRowListener {
+    interface OnClickRowListener<T> {
         /**
          * When we click on Row we invoke this method
          */
-        fun onClickRow(v: View, position: Int)
+        fun onClickRow(v: View, position: Int, currentItem: T)
     }
 }
 

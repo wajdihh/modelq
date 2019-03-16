@@ -8,8 +8,16 @@ class ListActivity : BaseActivity() {
     override fun getContentViewResources() = R.layout.activity_fragment
 
     override fun onPostCreateView(isNewInstance: Boolean) {
-        if (isNewInstance)
+        if (isNewInstance) {
             setFragment(ListFragment.newInstance())
+            setUpActionBar()
+        }
+    }
+
+    private fun setUpActionBar() {
+        supportActionBar?.apply {
+            setTitle(R.string.list_title)
+        }
     }
 
 }

@@ -8,7 +8,9 @@ import com.wajdihh.presentation.model.DemandsPagingUi
 import com.wajdihh.presentation.utils.Utility
 
 
-fun Demand.toDemandItemUi(myLat: Double, myLng: Double) = DemandItemUi(title = title,
+fun Demand.toDemandItemUi(myLat: Double, myLng: Double) = DemandItemUi(
+        id = id,
+        title = title,
         address = address,
         userName = (user?.firstName ?: "") + " " + (user?.lastName ?: ""),
         price = price,

@@ -17,7 +17,7 @@ import javax.inject.Inject
  */
 class GetDemandUseCase @Inject constructor(private val demandRepository: DemandRepository,
                                            threadExecutor: ThreadExecutor,
-                                           postExecutionThread: PostExecutionThread) : SingleUseCase<Demand, String?>(threadExecutor, postExecutionThread) {
+                                           postExecutionThread: PostExecutionThread) : SingleUseCase<Demand, Int>(threadExecutor, postExecutionThread) {
 
-    override fun buildUseCaseObservable(params: String?): Single<Demand> = demandRepository.getDemandDetails(params ?: "")
+    override fun buildUseCaseObservable(params: Int?): Single<Demand> = demandRepository.getDemandDetails(params!!)
 }

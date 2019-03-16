@@ -23,5 +23,5 @@ interface DemandService {
 
 
     @GET("/demands{id}/details")
-    fun getDemand(@Path("id") id: String): Single<DemandJson>
+    fun getDemand(@Path("id") id: Int): Single<DemandJson>
 }

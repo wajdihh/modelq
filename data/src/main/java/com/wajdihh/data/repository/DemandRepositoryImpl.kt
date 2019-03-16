@@ -28,7 +28,7 @@ class DemandRepositoryImpl(private val localDemandDataSource: DemandLocalDataSou
                 }
     }
 
-    override fun getDemandDetails(id: String): Single<Demand> {
+    override fun getDemandDetails(id: Int): Single<Demand> {
         return remoteDemandDataSource.getDemandDetails(id)
     }
 

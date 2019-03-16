@@ -2,6 +2,7 @@ package com.wajdihh.modelq.di.component
 
 import com.wajdihh.modelq.di.module.PresenterModule
 import com.wajdihh.modelq.di.scope.PerActivity
+import com.wajdihh.modelq.ui.detail.DetailFragment
 import com.wajdihh.modelq.ui.list.ListFragment
 import dagger.Subcomponent
 
@@ -14,4 +15,5 @@ import dagger.Subcomponent
 interface PresenterComponent {
 
     fun inject(target: ListFragment)
+    fun inject(target: DetailFragment)
 }

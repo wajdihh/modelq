@@ -8,7 +8,7 @@ data class DemandJson(
         val deadline: String?,
         val description: String?,
         val followed: Boolean?,
-        val id: Int?,
+        val id: Int,
         val lat: String?,
         val lng: String?,
         val state: String?,

@@ -23,7 +23,7 @@ class DemandRemoteDataSourceImpl(private val demandService: DemandService) : Dem
                 params?.perPage).map { it.toDemandsPaging() }
     }
 
-    override fun getDemandDetails(id: String): Single<Demand> {
+    override fun getDemandDetails(id: Int): Single<Demand> {
         return demandService.getDemand(id).map { it.toDemand() }
     }
 }

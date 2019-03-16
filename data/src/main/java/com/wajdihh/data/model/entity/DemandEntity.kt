@@ -10,7 +10,7 @@ import android.arch.persistence.room.PrimaryKey
 @Entity(tableName = TBL_DEMAND)
 class DemandEntity(
         @PrimaryKey(autoGenerate = true)
-        var id: Long,
+        var id: Int,
         var title: String,
         var address: String,
         var firstName: String,

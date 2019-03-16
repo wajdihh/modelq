@@ -29,7 +29,7 @@ class DemandRemoteDataSourceMock(private val context: Context) : DemandRemoteDat
         }
     }
 
-    override fun getDemandDetails(id: String): Single<Demand> {
+    override fun getDemandDetails(id: Int): Single<Demand> {
         return Single.fromCallable {
             val json = Utils.getAssetsJSON(context, DETAIL_FILE_NAME)
             gson.fromJson(json, DemandJson::class.java).toDemand()

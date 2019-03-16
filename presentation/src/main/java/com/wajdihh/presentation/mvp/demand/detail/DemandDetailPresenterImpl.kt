@@ -14,7 +14,7 @@ class DemandDetailPresenterImpl @Inject constructor(private val getDemandUseCase
         view = myView as DemandDetailView
     }
 
-    override fun getDetails(id: String) {
+    override fun getDetails(id: Int) {
         getDemandUseCase.execute(object : MySingleObserver<Demand>(view) {
             override fun onSuccess(t: Demand) {
                 super.onSuccess(t)
@@ -25,6 +25,6 @@ class DemandDetailPresenterImpl @Inject constructor(private val getDemandUseCase
                 super.onError(e)
                 view.onErrorLoadDetails(e)
             }
-        })
+        }, id)
     }
 }

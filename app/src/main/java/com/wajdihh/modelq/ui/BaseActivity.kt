@@ -44,33 +44,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
 
     /**
-     * Set fragment and Add it to the backStack
-     */
-    fun setFragment(pFragment: Fragment) {
-        setFragmentOp(pFragment, "", true)
-    }
-
-    /**
-     * Set fragment WITHOUT ADDING it to the backStack
-     */
-    fun setFragmentNoBack(pFragment: Fragment) {
-        setFragmentOp(pFragment, "", false)
-    }
-
-    /**
-     * Set fragment WITHOUT ADDING it to the backStack + possibility to add a custom tag
-     */
-    fun setFragmentNoBack(pFragment: Fragment, tag: String) {
-        setFragmentOp(pFragment, tag, false)
-    }
-
-    /**
      * Set fragment with options
      */
-    private fun setFragmentOp(pFragment: Fragment, tag: String, isAddToBackStack: Boolean) {
-
-        val fragTrs = fragmentManager.beginTransaction().replace(R.id.fragment_container, pFragment, tag)
-        if (isAddToBackStack) fragTrs.addToBackStack(null)
+    fun setFragment(pFragment: Fragment) {
+        val fragTrs = fragmentManager.beginTransaction().replace(R.id.fragment_container, pFragment)
         fragTrs.commit()
     }
 

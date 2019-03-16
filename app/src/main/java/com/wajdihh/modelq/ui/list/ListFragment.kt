@@ -8,6 +8,8 @@ import com.wajdihh.modelq.R
 import com.wajdihh.modelq.application.MyApplication
 import com.wajdihh.modelq.ui.BaseFragment
 import com.wajdihh.modelq.ui.BaseRecycleViewAdapter
+import com.wajdihh.modelq.ui.Router
+import com.wajdihh.presentation.model.DemandItemUi
 import com.wajdihh.presentation.model.DemandsPagingUi
 import com.wajdihh.presentation.mvp.demand.list.DemandListPresenter
 import com.wajdihh.presentation.mvp.demand.list.DemandListView
@@ -47,10 +49,11 @@ class ListFragment : BaseFragment(), DemandListView {
         adapter = ListAdapter()
         demandsRecycleView.layoutManager = LinearLayoutManager(activity)
         demandsRecycleView.adapter = adapter
-        adapter.setOnClickRowListener(object : BaseRecycleViewAdapter.OnClickRowListener {
-            override fun onClickRow(v: View, position: Int) {
-                Toast.makeText(activity, "CLick rowww", Toast.LENGTH_LONG).show()
+        adapter.setOnClickRowListener(object : BaseRecycleViewAdapter.OnClickRowListener<DemandItemUi> {
+            override fun onClickRow(v: View, position: Int, currentItem: DemandItemUi) {
+                Router.navigateToDetail(activity, currentItem.id)
             }
+
         })
         adapter.setOnLoadMoreListener(object : BaseRecycleViewAdapter.OnLoadMoreListener {
             override fun onLoadMore() {

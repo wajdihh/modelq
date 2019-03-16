@@ -1,6 +1,7 @@
 package com.wajdihh.presentation.model
 
-data class DemandItemUi(val title: String,
+data class DemandItemUi(val id: Int,
+                        val title: String,
                         val address: String,
                         val userName: String,
                         val price: Double,

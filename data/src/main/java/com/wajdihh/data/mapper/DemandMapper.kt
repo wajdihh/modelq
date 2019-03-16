@@ -16,7 +16,9 @@ fun PaginationJson.toPager() = Pager(currentPage = currentPage,
         perPage = perPage,
         total = total)
 
-fun DemandJson.toDemand() = Demand(title = title ?: "",
+fun DemandJson.toDemand() = Demand(
+        id = id,
+        title = title ?: "",
         address = address ?: "",
         description = description ?: "",
         price = (unitPrice ?: "0").toDouble(),
@@ -37,7 +39,9 @@ fun AnswerWizardJson.toAnswerWizard() = AnswerWizard(id = id, wizard = wizard?.t
  */
 fun List<DemandEntity>.toDemandsPaging() = DemandsPaging(pager = Pager(1, 50, size), demands = this.map { it.toDemand() })
 
-fun DemandEntity.toDemand() = Demand(title = title,
+fun DemandEntity.toDemand() = Demand(
+        id = id,
+        title = title,
         address = address,
         description = "",
         price = price,
@@ -48,7 +52,8 @@ fun DemandEntity.toDemand() = Demand(title = title,
         answerWizard = null
 )
 
-fun Demand.toDemandEntity() = DemandEntity(id = 0L,
+fun Demand.toDemandEntity() = DemandEntity(
+        id = id,
         title = title,
         address = address,
         firstName = user?.firstName ?: "",

@@ -7,4 +7,10 @@
     <string name="week_prefix">il y\'a %d une semaine</string>
     <string name="month_prefix">il y\'a %d un mois</string>
 
+    <!-- List -->
+    <string name="list_title">Toutes les demandes</string>
+
+    <!-- List -->
+    <string name="details_title">Détails</string>
+
 </resources>
