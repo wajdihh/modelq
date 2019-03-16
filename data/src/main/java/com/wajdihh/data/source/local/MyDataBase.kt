@@ -10,7 +10,6 @@ import com.wajdihh.data.model.entity.DemandEntity
  */
 
 @Database(entities = [(DemandEntity::class)], version = 1)
-
 abstract class MyDatabase : RoomDatabase() {
 
     abstract fun demandDao(): DemandDao

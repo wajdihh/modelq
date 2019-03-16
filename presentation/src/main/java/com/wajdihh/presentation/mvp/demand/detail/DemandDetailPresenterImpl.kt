@@ -2,10 +2,8 @@ package com.wajdihh.presentation.mvp.demand.detail
 
 import com.wajdihh.domain.interactor.usecase.demand.GetDemandUseCase
 import com.wajdihh.domain.model.Demand
+import com.wajdihh.presentation.MySingleObserver
 import com.wajdihh.presentation.mapper.toDemandUi
-import com.wajdihh.presentation.model.DemandUi
-import io.reactivex.observers.DisposableSingleObserver
-import java.lang.UnsupportedOperationException
 import javax.inject.Inject
 
 class DemandDetailPresenterImpl @Inject constructor(private val getDemandUseCase: GetDemandUseCase) : DemandDetailPresenter {
@@ -17,27 +15,16 @@ class DemandDetailPresenterImpl @Inject constructor(private val getDemandUseCase
     }
 
     override fun getDetails(id: String) {
-
-        view.onShowProgress()
-        getDemandUseCase.execute(object : DisposableSingleObserver<Demand>() {
+        getDemandUseCase.execute(object : MySingleObserver<Demand>(view) {
             override fun onSuccess(t: Demand) {
-                //if not attached , stop all stuffs
-                if(!view.isViewAttached())
-                    return
-
+                super.onSuccess(t)
                 view.onSuccessLoadDetails(t.toDemandUi())
-                view.onHideProgress()
             }
 
             override fun onError(e: Throwable) {
-                //if not attached , stop all stuffs
-                if(!view.isViewAttached())
-                    return
-
+                super.onError(e)
                 view.onErrorLoadDetails(e)
-                view.onHideProgress()
             }
-
         })
     }
 }

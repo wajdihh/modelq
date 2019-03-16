@@ -15,10 +15,10 @@ class DemandEntity(
         var address: String,
         var firstName: String,
         var lastName: String,
-        var price: String,
-        var lat: String,
-        var lng: String,
-        var createdAt: String
+        var price: Double,
+        var lat: Double,
+        var lng: Double,
+        var updateAt: String
 
 )
 

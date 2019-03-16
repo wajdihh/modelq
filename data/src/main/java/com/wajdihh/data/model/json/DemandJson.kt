@@ -26,7 +26,7 @@ data class DemandJson(
         @SerializedName("purchases_price") val purchasesPrice: String?,
         @SerializedName("share_url") val shareUrl: String?,
         @SerializedName("unit_price") val unitPrice: String?,
-        @SerializedName("updated_at") val updatedAt: String?,
+        @SerializedName("updated_at") val updatedAt: String,
         @SerializedName("stoot_type") val stootType: String?,
         @SerializedName("comments_count") val commentsCount: Int?,
         @SerializedName("created_at") val createdAt: String?,

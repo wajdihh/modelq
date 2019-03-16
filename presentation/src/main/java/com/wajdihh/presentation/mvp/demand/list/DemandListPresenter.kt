@@ -9,4 +9,6 @@ interface DemandListPresenter : BasePresenter {
      * Display the list of demands according specific params
      */
     fun searchForDemands(params : SearchRequest)
+
+    fun loadMoreDemands(itemCount: Int)
 }

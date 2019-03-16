@@ -7,9 +7,7 @@ import android.content.Context
  * to parse json file
  */
 class Utils {
-
     companion object {
-
         fun getAssetsJSON(context: Context, fileName: String): String {
             var json = ""
             try {
@@ -19,7 +17,6 @@ class Utils {
                 inputStream.read(buffer)
                 inputStream.close()
                 json = String(buffer, Charsets.UTF_8)
-
             } catch (e: Throwable) {
                 e.printStackTrace()
             }

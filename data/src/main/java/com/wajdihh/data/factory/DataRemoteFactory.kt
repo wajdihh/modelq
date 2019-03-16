@@ -61,7 +61,6 @@ object DataRemoteFactory {
     private fun createGson(): Gson {
         return GsonBuilder()
                 .setLenient()
-                .setDateFormat("dd/MM/yyyy")
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create()
     }

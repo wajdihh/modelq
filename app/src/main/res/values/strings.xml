@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">ModelQ</string>
 
+    <string name="price_prefix">%s Euro</string>
+    <string name="km_prefix">à %s Km</string>
+    <string name="day_prefix">il y\'a %d jour</string>
+    <string name="week_prefix">il y\'a %d une semaine</string>
+    <string name="month_prefix">il y\'a %d un mois</string>
 
-    <string name="pref_user_access_token">pref_user_access_token</string>
 </resources>
