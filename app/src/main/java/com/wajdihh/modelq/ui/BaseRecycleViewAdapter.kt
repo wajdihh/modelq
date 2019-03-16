@@ -1,5 +1,6 @@
 package com.wajdihh.modelq.ui
 
+import android.content.res.Resources
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +18,10 @@ abstract class BaseRecycleViewAdapter<T, VH : BaseRecycleViewHolder> : RecyclerV
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
     private var total = 0
+    protected lateinit var res: Resources
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        res = parent.context.resources
         return if (viewType == VIEW_TYPE_ITEM) {
             val view = LayoutInflater.from(parent.context).inflate(getResourceLayout(), parent, false)
             createViewHolder(view)

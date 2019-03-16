@@ -18,7 +18,7 @@ class DemandEntity(
         var price: Double,
         var lat: Double,
         var lng: Double,
-        var createdAt: String
+        var updateAt: String
 
 )
 

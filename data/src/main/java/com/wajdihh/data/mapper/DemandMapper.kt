@@ -22,6 +22,7 @@ fun DemandJson.toDemand() = Demand(title = title ?: "",
         price = (unitPrice ?: "0").toDouble(),
         lat = (lat ?: "0").toDouble(),
         lng = (lng ?: "0").toDouble(),
+        updateAt = updatedAt,
         user = user?.toUser(),
         answerWizard = answerWizard?.toAnswerWizard()
 )
@@ -42,6 +43,7 @@ fun DemandEntity.toDemand() = Demand(title = title,
         price = price,
         lat = lat,
         lng = lng,
+        updateAt = updateAt,
         user = User(firstName, lastName, "", "", ""),
         answerWizard = null
 )
@@ -54,4 +56,4 @@ fun Demand.toDemandEntity() = DemandEntity(id = 0L,
         price = price,
         lat = lat,
         lng = lng,
-        createdAt = "")
+        updateAt = updateAt)

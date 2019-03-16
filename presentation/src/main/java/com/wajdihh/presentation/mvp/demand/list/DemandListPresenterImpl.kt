@@ -1,24 +1,20 @@
 package com.wajdihh.presentation.mvp.demand.list
 
 import com.wajdihh.domain.interactor.usecase.demand.GetDemandsUseCase
-import com.wajdihh.domain.interactor.usecase.demand.SaveDemandsUseCase
 import com.wajdihh.domain.model.DemandsPaging
 import com.wajdihh.domain.request.SearchRequest
-import com.wajdihh.presentation.MyCompletableObserver
 import com.wajdihh.presentation.MySingleObserver
-import com.wajdihh.presentation.mapper.toDemand
 import com.wajdihh.presentation.mapper.toDemandsPagingUi
-import com.wajdihh.presentation.model.DemandItemUi
 import javax.inject.Inject
 
-class DemandListPresenterImpl @Inject constructor(private val getDemandsUseCase: GetDemandsUseCase,
-                                                  private val saveDemandsUseCase: SaveDemandsUseCase) : DemandListPresenter {
+class DemandListPresenterImpl @Inject constructor(private val getDemandsUseCase: GetDemandsUseCase) : DemandListPresenter {
 
 
     private lateinit var view: DemandListView
 
     private var searchParams: SearchRequest? = null
     private var total = 0
+    private var isShowProgress = true
 
     override fun attachView(myView: Any) {
         view = myView as DemandListView
@@ -28,6 +24,7 @@ class DemandListPresenterImpl @Inject constructor(private val getDemandsUseCase:
         searchParams?.let {
             if (itemCount < total) {
                 val page = it.page + 1
+                isShowProgress = false
                 searchForDemands(it.copy(page = page))
             }
         }
@@ -35,11 +32,11 @@ class DemandListPresenterImpl @Inject constructor(private val getDemandsUseCase:
 
     override fun searchForDemands(params: SearchRequest) {
         searchParams = params
-        getDemandsUseCase.execute(object : MySingleObserver<DemandsPaging>(view) {
+        getDemandsUseCase.execute(object : MySingleObserver<DemandsPaging>(view, isShowProgress) {
             override fun onSuccess(t: DemandsPaging) {
                 super.onSuccess(t)
                 total = t.pager.total
-                view.onSuccessLoadList(t.toDemandsPagingUi())
+                view.onSuccessLoadList(t.toDemandsPagingUi(myLat = params.lat, myLng = params.lng))
             }
 
             override fun onError(e: Throwable) {
@@ -49,14 +46,4 @@ class DemandListPresenterImpl @Inject constructor(private val getDemandsUseCase:
         }, params)
     }
 
-    override fun saveDemands(demands: List<DemandItemUi>) {
-        saveDemandsUseCase.execute(object : MyCompletableObserver(view) {
-            override fun onComplete() {
-                super.onComplete()
-                view.onSuccessSaveList()
-            }
-
-            override fun onError(e: Throwable) {}
-        }, demands.map { it.toDemand() })
-    }
 }

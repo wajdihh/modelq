@@ -13,9 +13,4 @@ interface DemandListView : BaseView{
      * When Loading list is completed by an error
      */
     fun onErrorLoadList(throwable: Throwable)
-
-    /**
-     * When saving list is completed by a success
-     */
-    fun onSuccessSaveList()
 }

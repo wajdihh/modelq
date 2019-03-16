@@ -5,7 +5,6 @@ import com.wajdihh.data.mapper.toDemandsPaging
 import com.wajdihh.data.source.local.DemandDao
 import com.wajdihh.domain.model.Demand
 import com.wajdihh.domain.model.DemandsPaging
-import io.reactivex.Completable
 import io.reactivex.Single
 
 /**
@@ -18,9 +17,7 @@ class DemandLocalDataSourceImp(private val demandDao: DemandDao) : DemandLocalDa
         it.toDemandsPaging()
     }
 
-    override fun saveDemands(list: List<Demand>): Completable {
-        return Completable.fromAction {
-            demandDao.saveDemands(list.map { it.toDemandEntity() })
-        }
+    override fun saveDemands(list: List<Demand>) {
+        demandDao.saveDemands(list.map { it.toDemandEntity() })
     }
 }

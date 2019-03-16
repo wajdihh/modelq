@@ -28,9 +28,9 @@ class ListAdapter : BaseRecycleViewAdapter<DemandItemUi, ListViewHolder>() {
         //Generate random icon
         setIconView(holder.iconView)
         holder.userName.text = currentItem.userName
-        holder.price.text = currentItem.price.toString()
-        holder.distance.text = currentItem.distance.toString()
-        holder.since.text = currentItem.since.toString()
+        holder.price.text = res.getString(R.string.price_prefix, currentItem.price)
+        holder.distance.text = res.getString(R.string.km_prefix, currentItem.distance)
+        holder.since.text = getSinceLabel(currentItem)
     }
 
 
@@ -42,5 +42,13 @@ class ListAdapter : BaseRecycleViewAdapter<DemandItemUi, ListViewHolder>() {
         val rnd = Random()
         val color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
         view.setBackgroundColor(color)
+    }
+
+    private fun getSinceLabel(currentItem: DemandItemUi): String {
+        return when {
+            currentItem.sinceAsMonth > 0 -> res.getString(R.string.month_prefix, currentItem.sinceAsMonth)
+            currentItem.sinceAsWeek > 0 -> res.getString(R.string.week_prefix, currentItem.sinceAsWeek)
+            else -> res.getString(R.string.day_prefix, currentItem.sinceAsDay)
+        }
     }
 }

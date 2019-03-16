@@ -2,4 +2,6 @@
 <resources>
     <bool name="enable_mock_mode">true</bool>
     <string name="URL_WEB_SERVICE">https://bff-mobile-dev.stootie.com</string>
+
+    <string name="pref_user_access_token">pref_user_access_token</string>
 </resources>

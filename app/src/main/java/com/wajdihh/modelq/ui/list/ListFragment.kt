@@ -74,15 +74,10 @@ class ListFragment : BaseFragment(), DemandListView {
 
     override fun onSuccessLoadList(demandsPagingUi: DemandsPagingUi) {
         adapter.appendList(ArrayList(demandsPagingUi.demands), demandsPagingUi.total)
-        //save List
-        presenter.saveDemands(demandsPagingUi.demands)
-
     }
 
     override fun onErrorLoadList(throwable: Throwable) {
         Toast.makeText(activity, "Operation finished with error", Toast.LENGTH_SHORT).show()
     }
-
-    override fun onSuccessSaveList() {}
 }
 

@@ -5,7 +5,6 @@ import com.wajdihh.domain.model.Demand
 import com.wajdihh.domain.model.DemandsPaging
 import com.wajdihh.domain.repository.DemandRepository
 import com.wajdihh.domain.request.SearchRequest
-import io.reactivex.Completable
 import io.reactivex.Single
 
 /**
@@ -17,19 +16,20 @@ class DemandRepositoryImpl(private val localDemandDataSource: DemandLocalDataSou
                            private val remoteDemandDataSource: DemandRemoteDataSource) : DemandRepository {
 
     override fun getDemands(params: SearchRequest?): Single<DemandsPaging> {
-        return remoteDemandDataSource.getDemands(params).onErrorResumeNext {
-            if (it is NoConnectivityException)
-                localDemandDataSource.getDemands()
-            else
-                Single.error(it)
-        }
+        return remoteDemandDataSource.getDemands(params)
+                .doOnSuccess {
+                    localDemandDataSource.saveDemands(it.demands)
+                }
+                .onErrorResumeNext {
+                    if (it is NoConnectivityException)
+                        localDemandDataSource.getDemands()
+                    else
+                        Single.error(it)
+                }
     }
 
     override fun getDemandDetails(id: String): Single<Demand> {
         return remoteDemandDataSource.getDemandDetails(id)
     }
 
-    override fun saveDemands(list: List<Demand>): Completable {
-        return localDemandDataSource.saveDemands(list)
-    }
 }
