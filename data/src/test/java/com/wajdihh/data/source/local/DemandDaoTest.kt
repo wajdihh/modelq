@@ -22,7 +22,7 @@ import kotlin.test.assertNotNull
 class DemandDaoTest {
 
     private lateinit var mDatabase: MyDatabase
-
+    private val data = DataTest()
 
     @Before
     fun init() {
@@ -42,12 +42,12 @@ class DemandDaoTest {
     @Test
     fun testDemandWriteAndRead() {
         //insert it in DB
-        mDatabase.demandDao().saveDemands(DataTest.demandEntities)
+        mDatabase.demandDao().saveDemands(data.demandEntities)
         //get result form DB
         val testObserver = mDatabase.demandDao().getDemands().map { it.first().firstName }.test()
 
         testObserver.assertNoErrors()
-        testObserver.assertValue(DataTest.demandEntities.first().firstName)
+        testObserver.assertValue(data.demandEntities.first().firstName)
     }
 
     @After

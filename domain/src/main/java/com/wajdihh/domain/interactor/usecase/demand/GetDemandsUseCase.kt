@@ -19,5 +19,5 @@ class GetDemandsUseCase @Inject constructor(private val demandRepository: Demand
                                             threadExecutor: ThreadExecutor,
                                             postExecutionThread: PostExecutionThread) : SingleUseCase<DemandsPaging, SearchRequest?>(threadExecutor, postExecutionThread) {
 
-    override fun buildUseCaseObservable(params: SearchRequest?): Single<DemandsPaging> = demandRepository.getDemands(params)
+    public override fun buildUseCaseObservable(params: SearchRequest?): Single<DemandsPaging> = demandRepository.getDemands(params)
 }

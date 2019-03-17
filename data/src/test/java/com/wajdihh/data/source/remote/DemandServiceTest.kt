@@ -21,6 +21,7 @@ import kotlin.test.assertNotNull
 class DemandServiceTest {
 
     private lateinit var demandService: DemandService
+    private val data = DataTest()
 
     @Before
     fun init() {
@@ -35,19 +36,19 @@ class DemandServiceTest {
 
     @Test
     fun getDemands() {
-        val testObserve = demandService.getDemands(DataTest.params.lat,
-                DataTest.params.lng,
-                DataTest.params.radius,
-                DataTest.params.type,
-                DataTest.params.page,
-                DataTest.params.perPage).test()
+        val testObserve = demandService.getDemands(data.params.lat,
+                data.params.lng,
+                data.params.radius,
+                data.params.type,
+                data.params.page,
+                data.params.perPage).test()
 
         testObserve.assertNoErrors()
     }
 
     @Test
     fun getDemandById() {
-        val testObserve = demandService.getDemand(DataTest.demandId).test()
+        val testObserve = demandService.getDemand(data.demandId).test()
         testObserve.assertNoErrors()
     }
 }
