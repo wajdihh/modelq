@@ -1,7 +1,7 @@
 package com.wajdihh.modelq.ui
 
-import android.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.wajdihh.modelq.R
 import com.wajdihh.modelq.extension.hide
@@ -47,7 +47,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * Set fragment with options
      */
     fun setFragment(pFragment: Fragment) {
-        val fragTrs = fragmentManager.beginTransaction().replace(R.id.fragment_container, pFragment)
+        val fragTrs = supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pFragment)
         fragTrs.commit()
     }
 

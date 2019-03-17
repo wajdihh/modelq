@@ -104,7 +104,7 @@ class DetailFragment : BaseFragment(), DemandDetailView, OnMapReadyCallback {
         //Point
         locPoint = LatLng(demand.lat, demand.lng)
         //Load map
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map)  as? MapFragment
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map)  as? SupportMapFragment
         mapFragment?.getMapAsync(this)
     }
 }
