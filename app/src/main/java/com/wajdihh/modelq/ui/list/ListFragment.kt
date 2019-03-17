@@ -91,12 +91,7 @@ class ListFragment : BaseFragment(), DemandListView {
      * Just method is to add the xToken to the header, because the details web service is consumed with authenticated user
      */
     private fun simulateLogin() {
-        val xContext = "eyJhZHZlcnRpc2VyX3RyYWNraW5nX2VuYWJsZWQiOmZhbHNlLCJwbGF0Zm9ybSI6ImF\n" +
-                "uZHJvaWQiLCJhcHBzZmx5ZXJfaWQiOiIxNTQ0MTc1NTYwOTI2LTgwNDEwNTg2NTI4NjM\n" +
-                "xMTQzNDgiLCJidW5kbGVfdmVyc2lvbiI6IjYuMTAuMS4xIiwiYXBwbGljYXRpb25fdHJhY2t\n" +
-                "pbmdfZW5hYmxlZCI6ZmFsc2UsInVzZXJfaWQiOiIiLCJhcHBfaWQiOiJjb20uc3Rvb3RpZS\n" +
-                "5kZWJ1ZyIsImZhY2Vib29rX2FwcF9pZCI6IjEzNjE1NzEwMzEyNDUzMSIsImFkdmVydGlza\n" +
-                "W5nX2lkIjoiOGExYjJlNDYtYjNjMS00ODM0LWFlZDItMGUzZDNkYzkxMGE0In0="
+        val xContext = "eyJhZHZlcnRpc2VyX3RyYWNraW5nX2VuYWJsZWQiOmZhbHNlLCJwbGF0Zm9ybSI6ImFuZHJvaWQiLCJhcHBzZmx5ZXJfaWQiOiIxNTQ0MTc1NTYwOTI2LTgwNDEwNTg2NTI4NjMxMTQzNDgiLCJidW5kbGVfdmVyc2lvbiI6IjYuMTAuMS4xIiwiYXBwbGljYXRpb25fdHJhY2tpbmdfZW5hYmxlZCI6ZmFsc2UsInVzZXJfaWQiOiIiLCJhcHBfaWQiOiJjb20uc3Rvb3RpZS5kZWJ1ZyIsImZhY2Vib29rX2FwcF9pZCI6IjEzNjE1NzEwMzEyNDUzMSIsImFkdmVydGlzaW5nX2lkIjoiOGExYjJlNDYtYjNjMS00ODM0LWFlZDItMGUzZDNkYzkxMGE0In0="
         sharedPreferences.edit().putString(getString(R.string.pref_user_access_token), xContext).apply()
     }
 }
