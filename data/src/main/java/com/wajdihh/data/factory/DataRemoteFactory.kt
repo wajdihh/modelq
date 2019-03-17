@@ -19,8 +19,8 @@ import java.util.concurrent.TimeUnit
 object DataRemoteFactory {
 
 
-    fun createDemandService(baseUrl: String, isOnline: Boolean, userAccessToken: String): DemandService {
-        val retrofit = createNetworkingBundle(baseUrl, ConnectivityInterceptor(isOnline, userAccessToken))
+    fun createDemandService(baseUrl: String, connectivityInterceptor: ConnectivityInterceptor): DemandService {
+        val retrofit = createNetworkingBundle(baseUrl, connectivityInterceptor)
         return retrofit.create(DemandService::class.java)
     }
 

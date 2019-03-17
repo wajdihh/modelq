@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">ModelQ</string>
 
-    <string name="price_prefix">%s Euro</string>
+    <string name="price_prefix">%s €</string>
     <string name="km_prefix">à %s Km</string>
     <string name="day_prefix">il y\'a %d jour</string>
     <string name="week_prefix">il y\'a %d une semaine</string>
     <string name="month_prefix">il y\'a %d un mois</string>
 
-    <!-- List -->
+    <!-- List Screen -->
     <string name="list_title">Toutes les demandes</string>
 
-    <!-- List -->
+    <!-- Details Screen -->
     <string name="details_title">Détails</string>
 
 </resources>

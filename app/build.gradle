@@ -51,4 +51,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportLibraryVersion}"
     implementation "com.android.support:cardview-v7:${rootProject.ext.supportLibraryVersion}"
     implementation "com.android.support:design:${rootProject.ext.supportLibraryVersion}"
+    //OkHttp [JUST TO AVOID DAGGER : Exception when init the Interceptor]
+    implementation   "com.squareup.okhttp3:okhttp:${rootProject.ext.okHttpVersion}"
+    implementation   "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okHttpVersion}"
 }

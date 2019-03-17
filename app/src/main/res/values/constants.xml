@@ -2,6 +2,9 @@
 <resources>
     <bool name="enable_mock_mode">true</bool>
     <string name="URL_WEB_SERVICE">https://bff-mobile-dev.stootie.com</string>
+    <string name="Accept_Version">3.0.0</string>
+    <string name="X_Request_Id">5f3b4f3c-44ca-4447-89e4-759e00d9b2b2</string>
+
 
     <string name="pref_user_access_token">pref_user_access_token</string>
 </resources>

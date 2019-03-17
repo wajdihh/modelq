@@ -8,7 +8,9 @@ import okhttp3.Response
  * This class is used to detect connectivity and User access Token
  */
 class ConnectivityInterceptor(private val isOnline: Boolean,
-                              private val userAccessToken: String) : Interceptor {
+                              private val xContext: String = "",
+                              private val acceptVersion: String = "",
+                              private val xRequestId: String = "") : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain?): Response {
 
@@ -17,9 +19,14 @@ class ConnectivityInterceptor(private val isOnline: Boolean,
 
         val builder = chain?.request()?.newBuilder()
         //test if token user is set it
-        return if (!userAccessToken.isEmpty())
-            chain!!.proceed(builder!!.addHeader("Authorization", "Bearer " + userAccessToken).build())
-        else
+        return if (!xContext.isEmpty()) {
+            builder?.apply {
+                addHeader("X-context", xContext)
+                addHeader("Accept-Version", acceptVersion)
+                addHeader("X-Request-Id", xRequestId)
+            }
+            chain?.proceed(builder?.build())!!
+        } else
             chain!!.proceed(builder!!.build())
     }
 
