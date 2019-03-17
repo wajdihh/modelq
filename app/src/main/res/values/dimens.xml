@@ -6,6 +6,8 @@
     <dimen name="rowlv_padding">10dp</dimen>
 
     <!-- Detail  -->
-    <dimen name="detail_padding">10dp</dimen>
+    <dimen name="detail_padding">20dp</dimen>
+    <dimen name="detail_user_pic_dim">60dp</dimen>
+    <dimen name="detail_map_height">200dp</dimen>
 
 </resources>

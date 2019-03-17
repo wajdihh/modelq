@@ -10,5 +10,6 @@ import com.wajdihh.domain.model.User
 fun UserJson.toUser() = User(firstName = firstName,
         lastName = lastName,
         lastSignInAt = lastSignInAt,
+        evalCount = evalCount,
         profilePictureUrl = profilePictureUrl,
         profileThumbUrl = thumbPictureUrl)

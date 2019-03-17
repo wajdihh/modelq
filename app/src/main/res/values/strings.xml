@@ -12,5 +12,6 @@
 
     <!-- Details Screen -->
     <string name="details_title">Détails</string>
+    <string name="details_user_eval">(%d évaluations)</string>
 
 </resources>

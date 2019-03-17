@@ -2,9 +2,11 @@ package com.wajdihh.presentation.mapper
 
 import com.wajdihh.domain.model.Demand
 import com.wajdihh.domain.model.DemandsPaging
+import com.wajdihh.domain.model.User
 import com.wajdihh.presentation.model.DemandItemUi
 import com.wajdihh.presentation.model.DemandUi
 import com.wajdihh.presentation.model.DemandsPagingUi
+import com.wajdihh.presentation.model.UserUi
 import com.wajdihh.presentation.utils.Utility
 
 
@@ -20,13 +22,20 @@ fun Demand.toDemandItemUi(myLat: Double, myLng: Double) = DemandItemUi(
         sinceAsMonth = Utility.getSinceToMonth(updateAt)
 )
 
-fun Demand.toDemandUi() = DemandUi(title = title,
+fun Demand.toDemandUi() = DemandUi(
+        title = title,
+        description = description,
         address = address,
-        userName = user?.firstName ?: "",
         price = price,
-        distance = lat,
-        since = Utility.getSinceToDay(updateAt))
+        lat = lat,
+        lng = lng,
+        user = user?.toUserUi())
 
+fun User.toUserUi() = UserUi(
+        fullName = firstName + " " + lastName,
+        evalCount = evalCount,
+        profileThumbUrl = profileThumbUrl,
+        profilePictureUrl = profilePictureUrl)
 
 fun DemandsPaging.toDemandsPagingUi(myLat: Double, myLng: Double) = DemandsPagingUi(total = pager.total,
                                                         currentPage = pager.currentPage,

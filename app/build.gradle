@@ -14,6 +14,17 @@ android {
         multiDexEnabled = true
         testInstrumentationRunner "org.buffer.android.boilerplate.ui.test.TestRunner"
     }
+    signingConfigs {
+        debug {
+            storeFile file(DEBUG_STORE_FILE)
+            storePassword DEBUG_STORE_PASSWORD
+            keyAlias DEBUG_KEY_ALIAS
+            keyPassword DEBUG_KEY_PASSWORD
+        }
+        release {
+
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -22,6 +33,10 @@ android {
     }
 }
 
+ext {
+    picassoVersion = "2.5.2"
+    mapVersion = "11.8.0"
+}
 dependencies {
     implementation project(':presentation')
     implementation project(':data')
@@ -54,4 +69,8 @@ dependencies {
     //OkHttp [JUST TO AVOID DAGGER : Exception when init the Interceptor]
     implementation   "com.squareup.okhttp3:okhttp:${rootProject.ext.okHttpVersion}"
     implementation   "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okHttpVersion}"
+    // Picasso
+    implementation "com.squareup.picasso:picasso:${picassoVersion}"
+    // Below is the Google Play Services dependency required for using the Google Maps Android API
+    implementation "com.google.android.gms:play-services-maps:${mapVersion}"
 }

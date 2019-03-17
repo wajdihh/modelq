@@ -1,8 +1,9 @@
 package com.wajdihh.presentation.model
 
 data class DemandUi(val title: String,
+                    val description: String,
                     val address: String,
-                    val userName: String,
                     val price: Double,
-                    val distance: Double,
-                    val since: Long)
+                    val lat: Double,
+                    val lng: Double,
+                    val user: UserUi?)
