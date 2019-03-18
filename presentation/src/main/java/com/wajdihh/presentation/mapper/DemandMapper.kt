@@ -37,6 +37,7 @@ fun User.toUserUi() = UserUi(
         profileThumbUrl = profileThumbUrl,
         profilePictureUrl = profilePictureUrl)
 
-fun DemandsPaging.toDemandsPagingUi(myLat: Double, myLng: Double) = DemandsPagingUi(total = pager.total,
-                                                        currentPage = pager.currentPage,
+fun DemandsPaging.toDemandsPagingUi(myLat: Double, myLng: Double) = DemandsPagingUi(
+        total = pager.total,
+        currentPage = pager.currentPage,
         demands = demands.map { it.toDemandItemUi(myLat, myLng) })

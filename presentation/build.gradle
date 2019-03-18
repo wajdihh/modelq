@@ -16,6 +16,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 
@@ -36,6 +39,8 @@ dependencies {
      * Testing libraries
      */
     testImplementation  "junit:junit:${rootProject.ext.jUnitVersion}"
+    testImplementation  "org.jetbrains.kotlin:kotlin-test-junit:${rootProject.ext.kotlin_version}"
     testImplementation  "org.assertj:assertj-core:${rootProject.ext.assertJVersion}"
+    testImplementation  "com.nhaarman:mockito-kotlin:${rootProject.ext.mockitoKotlinVersion}"
 
 }

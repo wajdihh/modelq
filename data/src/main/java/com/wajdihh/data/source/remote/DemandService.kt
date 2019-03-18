@@ -22,6 +22,6 @@ interface DemandService {
                    @Query("per_page") perPage: Int?): Single<DemandsPagingJson>
 
 
-    @GET("/demands{id}/details")
+    @GET("/demands/{id}/details")
     fun getDemand(@Path("id") id: Int): Single<DemandJson>
 }
