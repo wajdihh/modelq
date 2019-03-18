@@ -76,6 +76,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:visibility="gone"
             tools:text="Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor"
             app:layout_constraintTop_toBottomOf="@+id/detailsTitle" />
 
@@ -99,7 +100,7 @@
             app:layout_constraintTop_toBottomOf="@+id/separator2" />
 
         <fragment
-            android:name="com.google.android.gms.maps.MapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_map_height"

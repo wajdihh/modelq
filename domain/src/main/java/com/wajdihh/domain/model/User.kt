@@ -5,8 +5,9 @@ package com.wajdihh.domain.model
  * Demand model
  */
 data class User(val firstName: String,
-                val lastName: String,
+                val lastName: String?,
+                val name: String?,
                 val evalCount: Int,
-                val lastSignInAt: String,
+                val lastSignInAt: String?,
                 val profilePictureUrl: String?,
                 val profileThumbUrl: String?)

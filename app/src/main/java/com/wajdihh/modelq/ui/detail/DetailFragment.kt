@@ -1,7 +1,9 @@
 package com.wajdihh.modelq.ui.detail
 
-import android.widget.Toast
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
@@ -11,11 +13,13 @@ import com.wajdihh.modelq.extension.bundle
 import com.wajdihh.modelq.extension.hide
 import com.wajdihh.modelq.extension.show
 import com.wajdihh.modelq.ui.BaseFragment
+import com.wajdihh.modelq.utils.AlertUtils
 import com.wajdihh.modelq.utils.CircleTransform
 import com.wajdihh.presentation.model.DemandUi
 import com.wajdihh.presentation.mvp.demand.detail.DemandDetailPresenter
 import com.wajdihh.presentation.mvp.demand.detail.DemandDetailView
 import kotlinx.android.synthetic.main.fragment_detail.*
+import kotlinx.android.synthetic.main.fragment_detail.view.*
 import javax.inject.Inject
 
 /**
@@ -67,7 +71,8 @@ class DetailFragment : BaseFragment(), DemandDetailView, OnMapReadyCallback {
     }
 
     override fun onErrorLoadDetails(throwable: Throwable) {
-        Toast.makeText(activity, "Operation finished with error", Toast.LENGTH_SHORT).show()
+        detailsContainer.hide()
+        AlertUtils.showAlertError(context, throwable.localizedMessage)
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
@@ -87,7 +92,7 @@ class DetailFragment : BaseFragment(), DemandDetailView, OnMapReadyCallback {
                 .error(R.drawable.default_avatar_large)
                 .into(detailsUserPic)
         //Name
-        detailsUserName.text = demand.user?.fullName
+        detailsUserName.text = demand.user?.name
         //Eval
         detailsUserEval.text = getString(R.string.details_user_eval, demand.user?.evalCount)
     }
@@ -98,7 +103,11 @@ class DetailFragment : BaseFragment(), DemandDetailView, OnMapReadyCallback {
         //price
         detailsPrice.text = getString(R.string.price_prefix, demand.price)
         //description
-        detailsDescription.text = demand.description
+        if (demand.description.isNotEmpty())
+            detailsDescription.apply {
+                show()
+                text = demand.description
+            }
         //address
         detailsAddress.text = demand.address
         //Point

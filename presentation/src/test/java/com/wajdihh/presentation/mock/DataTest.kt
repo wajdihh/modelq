@@ -18,7 +18,7 @@ class DataTest {
             lng = 0.0,
             address = "my add",
             updateAt = "2017-10-05T11:43:16+02:00",
-            user = User("Wajdi", "Hh", 0, "20-02-2018", "", ""),
+            user = User("Wajdi", "Hh", "Wajdi Hh.", 0, "20-02-2018", "", ""),
             answerWizard = null)
 
 
@@ -39,7 +39,7 @@ class DataTest {
             price = 0.0,
             lat = 0.0,
             lng = 0.0,
-            user = UserUi("Wajdi Hh", 0, "", ""))
+            user = UserUi("Wajdi Hh.", 0, "", ""))
 
 
     val demands = listOf(demand, demand, demand, demand)

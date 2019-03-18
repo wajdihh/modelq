@@ -32,7 +32,7 @@ fun Demand.toDemandUi() = DemandUi(
         user = user?.toUserUi())
 
 fun User.toUserUi() = UserUi(
-        fullName = firstName + " " + lastName,
+        name = name ?: "",
         evalCount = evalCount,
         profileThumbUrl = profileThumbUrl,
         profilePictureUrl = profilePictureUrl)

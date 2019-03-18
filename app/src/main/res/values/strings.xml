@@ -14,4 +14,7 @@
     <string name="details_title">Détails</string>
     <string name="details_user_eval">(%d évaluations)</string>
 
+    <!-- Error messages -->
+    <string name="alert_error_title">Une erreur est survenue</string>
+
 </resources>

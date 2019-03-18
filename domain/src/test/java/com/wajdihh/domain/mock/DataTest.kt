@@ -15,10 +15,10 @@ class DataTest {
             lng = 0.0,
             address = random(),
             updateAt = random(),
-            user = User(random(), random(), 0, random(), random(), random()),
+            user = User(random(), random(), random(), 0, random(), random(), random()),
             answerWizard = null)
 
-    val demands = listOf(demand, demand, demand, demand)
+    private val demands = listOf(demand, demand, demand, demand)
     val demandPaging = DemandsPaging(pager = Pager(0, 0, 0), demands = demands)
 
 

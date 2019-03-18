@@ -3,19 +3,20 @@ package com.wajdihh.modelq.ui.list
 import android.content.SharedPreferences
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.widget.Toast
 import com.wajdihh.domain.request.SearchRequest
 import com.wajdihh.modelq.R
 import com.wajdihh.modelq.application.MyApplication
 import com.wajdihh.modelq.ui.BaseFragment
 import com.wajdihh.modelq.ui.BaseRecycleViewAdapter
 import com.wajdihh.modelq.ui.Router
+import com.wajdihh.modelq.utils.AlertUtils
 import com.wajdihh.presentation.model.DemandItemUi
 import com.wajdihh.presentation.model.DemandsPagingUi
 import com.wajdihh.presentation.mvp.demand.list.DemandListPresenter
 import com.wajdihh.presentation.mvp.demand.list.DemandListView
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
+
 
 /**
  * Created by wajdihh on 3/13/19.
@@ -84,7 +85,7 @@ class ListFragment : BaseFragment(), DemandListView {
     }
 
     override fun onErrorLoadList(throwable: Throwable) {
-        Toast.makeText(activity, "Operation finished with error", Toast.LENGTH_SHORT).show()
+        AlertUtils.showAlertError(context, throwable.localizedMessage)
     }
 
     /**

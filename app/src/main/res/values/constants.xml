@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <bool name="enable_mock_mode">true</bool>
+    <bool name="enable_mock_mode">false</bool>
     <string name="URL_WEB_SERVICE">https://bff-mobile-dev.stootie.com</string>
     <string name="google_maps_key">AIzaSyCysLW7OrkLGDDYX-GhBpBUS2p1XFtzeyI</string>
     <string name="Accept_Version">3.0.0</string>

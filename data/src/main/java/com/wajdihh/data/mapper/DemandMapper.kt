@@ -48,7 +48,7 @@ fun DemandEntity.toDemand() = Demand(
         lat = lat,
         lng = lng,
         updateAt = updateAt,
-        user = User(firstName, lastName, 0, "", "", ""),
+        user = User(firstName, lastName, firstName, 0, "", "", ""),
         answerWizard = null
 )
 

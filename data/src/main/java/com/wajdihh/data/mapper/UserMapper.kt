@@ -9,6 +9,7 @@ import com.wajdihh.domain.model.User
  */
 fun UserJson.toUser() = User(firstName = firstName,
         lastName = lastName,
+        name = name,
         lastSignInAt = lastSignInAt,
         evalCount = evalCount,
         profilePictureUrl = profilePictureUrl,
