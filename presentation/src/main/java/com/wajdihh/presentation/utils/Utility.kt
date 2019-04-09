@@ -21,7 +21,7 @@ class Utility {
             loc2.longitude = lng2
 
             val distance = (loc1.distanceTo(loc2) / 1000)
-            return String.format("%.2f", distance).toFloat()
+            return String.format(Locale.ENGLISH,"%.2f", distance).toFloat()
         }
 
         fun getSinceToDay(givenDate: String): Long {
