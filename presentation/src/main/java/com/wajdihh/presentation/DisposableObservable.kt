@@ -10,7 +10,8 @@ import io.reactivex.observers.DisposableSingleObserver
 open class MySingleObserver<T>(private val baseView: BaseView,
                                private val isShowProgress: Boolean = true) : DisposableSingleObserver<T>() {
 
-    override fun onStart() {
+
+    public override fun onStart() {
         if (baseView.isViewAttached() && isShowProgress)
             baseView.onShowProgress()
     }
